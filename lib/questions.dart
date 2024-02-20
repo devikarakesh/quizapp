@@ -12,16 +12,35 @@ class _QuestionState extends State<Question> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-
-
-          TextButton(onPressed: (){}, child:Text('TRUE')),
-          TextButton(onPressed: (){}, child:Text('FALSE')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Google was orinally known as backrub',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            TextButton(
+              style:TextButton.styleFrom(
+                backgroundColor:Colors.green,
+              ),
+              onPressed: () {},
+              child: Text('TRUE'),
+            ),
+            SizedBox(height:30),
+            TextButton(
+              style:TextButton.styleFrom(
+                backgroundColor:Colors.red,
+              ),
+                onPressed: () {},
+                child: Text('FALSE'),
+            ),
           ],
-                ),
-
-                );
+        ),
+      ),
+    );
   }
 }
