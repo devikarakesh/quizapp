@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/qn.dart';
 
 class Question extends StatefulWidget {
   const Question({super.key});
@@ -8,6 +9,7 @@ class Question extends StatefulWidget {
 }
 
 class _QuestionState extends State<Question> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,30 +19,52 @@ class _QuestionState extends State<Question> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Google was orinally known as backrub',
+              myList[index].qus,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             TextButton(
-              style:TextButton.styleFrom(
-                backgroundColor:Colors.green,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
               ),
-              onPressed: () {},
+              onPressed: (){
+                setState((){
+                  nextqn();
+                });
+                },
               child: Text('TRUE'),
             ),
-            SizedBox(height:30),
+            SizedBox(height: 30),
             TextButton(
-              style:TextButton.styleFrom(
-                backgroundColor:Colors.red,
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
               ),
-                onPressed: () {},
-                child: Text('FALSE'),
+              onPressed: () {setState((){
+                nextqn();
+              });},
+              child: Text('FALSE'),
             ),
           ],
         ),
       ),
     );
+  }
+
+  List myList = [
+    Quiz(qus: 'All dogs have tails', ans: false),
+    Quiz(qus: 'The moon orbits around Earth', ans: true),
+    Quiz(qus: 'Cats always land on their feet', ans: true),
+    Quiz(qus: 'Humans have four stomachs.', ans: false),
+    Quiz(qus: 'Ostriches can fly', ans: false),
+  ];
+
+  int index = 0;
+
+  void nextqn() {
+    if (index < myList.length) {
+      index++;
+    }
   }
 }
