@@ -32,6 +32,7 @@ class _QuestionState extends State<Question> {
               onPressed: (){
                 setState((){
                   nextqn();
+                  check(true);
                 });
                 },
               child: Text('TRUE'),
@@ -43,9 +44,11 @@ class _QuestionState extends State<Question> {
               ),
               onPressed: () {setState((){
                 nextqn();
+                check(false);
               });},
               child: Text('FALSE'),
             ),
+          Text(result,style:TextStyle(color:Colors.white),)
           ],
         ),
       ),
@@ -61,10 +64,26 @@ class _QuestionState extends State<Question> {
   ];
 
   int index = 0;
+  String result='';
 
   void nextqn() {
     if (index < myList.length) {
       index++;
     }
   }
+
+  void check(bool answer) {
+    print (answer);
+    if (answer == myList[index-1].ans) {
+      //print('correct answer');
+      result='correct answer';
+    }
+    else {
+      //print('wrong answer');
+      result='wrong answer';
+    }
+  }
+
+
+
 }
